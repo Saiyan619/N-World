@@ -1,0 +1,81 @@
+
+.chat{
+    height: 50%;
+    position: relative;
+}
+.chat-main-container{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    background-color: blue;
+    margin: auto;
+}
+
+.side-nd-chatroom{
+    display: flex;
+}
+.Navbar{
+    z-index: 00;
+}
+
+.sidebar{
+    transition: 1s;
+    width: 30%;
+    /* z-index: 10000000000; */
+    /* max-height: 87vh;
+    overflow-y: scroll;
+    scrollbar-width: thin; */
+    /* position: absolute; */
+}
+.sidebar_active{
+    transition: 1s;
+    width: 30%;
+    /* z-index: 10000000000; */
+    /* max-height: 87vh;
+    overflow-y: scroll;
+    scrollbar-width: thin; */
+    /* position: absolute; */
+}
+.chatroom{
+    width: 70%;
+    transition: 1s;
+}.chatroom_active{
+    width: 70%;
+}
+
+@media screen and (max-width:650px) {
+    .chat{padding: 0px;}
+    .chat-main-container{
+        /* height: 50vh; */
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+        background-color: green;
+        margin: auto;
+    }
+    
+.sidebar{
+    width: 60%;
+    z-index: 10000000000;
+    position: absolute;
+    height: 91vh;
+    overflow-y: scroll;
+    transition: .5s;
+    scrollbar-width: thin;
+}.sidebar_active{
+    transition: 1s;
+    width: 0%;
+    z-index: 10000000000;
+    position: absolute;
+    overflow: hidden;
+    transition: .5s;
+    height: 91vh;
+}
+.chatroom{
+    width: 100%;
+    transition: 1s;
+}.chatroom_active{
+    width: 100%;
+}
+
+}

@@ -1,0 +1,67 @@
+.navbar-container{
+    background-color: rgb(0, 51, 255);
+}
+
+ul{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.nav-left{
+    display: flex;
+    width: 30%;
+    align-items: center;
+    background-color: rgb(79, 42, 165);
+    gap: 10px;
+}
+.profile_name{
+    display: block;
+    color: white;
+}
+.nav-left img{
+    width: 50px;
+    height: 50px;
+    border-radius: 100px;
+    object-fit: cover;
+}
+.chats{
+    cursor: pointer;
+    background-color: rgb(84, 84, 229);
+    padding: 10px;
+    color: white;
+    text-decoration: underline;
+    display: none;
+}
+
+
+@media screen and (max-width:650px) {
+    .nav-left{
+        padding: 5px;
+        display: flex;
+        width: 45%;
+        align-items: center;
+        justify-content: center;
+        background-color: rgb(79, 42, 165);
+    }
+
+    .nav-left{
+        display: flex;
+        width: 20%;
+        align-items: center;
+        background-color: rgb(79, 42, 165);
+    }
+
+    .profile_name{
+        display: none;
+        color: white;
+    }
+
+    .chats{
+        cursor: pointer;
+        background-color: rgb(84, 84, 229);
+        /* padding: 10px; */
+        color: white;
+        text-decoration: underline;
+        display: block;
+    }
+}
