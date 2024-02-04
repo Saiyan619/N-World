@@ -15,7 +15,7 @@ console.log(displayClickUser.uid)
 
       <span style={{color:'white', paddingLeft:'7px'}}>Find a Friend</span>
       <div style={{padding:'5px', display:'flex', alignItems:'center', flexDirection:'column'}}>
-      <input className='search-input' type="text" onChange={(e)=>{setname(e.target.value)}} value={name} placeholder='Type in Exact name here....'/>
+      <input className='search-input' type="text" onChange={(e)=>{setname(e.target.value)}} value={name} placeholder='Type in the User Exact name here....'/>
       <button style={{ padding: '7px 20px', color: 'white', backgroundColor: 'blue',border:'1px solid white', borderRadius:'5px', marginTop:'5px'}} onClick={searchQuery}>Find</button>
       </div>     
      

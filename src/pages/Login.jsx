@@ -18,9 +18,7 @@ const Login = () => {
     const [password, setpassword] = useState('');
   const [username, setUsername] = useState('');
   const [handleLoginErr, sethandleLoginErr] = useState('')
-
-  
- 
+  const [loader, setLoader] = useState(true)  
 
     function handleUsername(e) {
       setUsername(e.target.value);
@@ -36,22 +34,23 @@ const Login = () => {
   const handleSubmit = async () => {
       try {
         await login(email, password);
-      
+        
         console.log("User logged in successfully. Updating isOnline to true.");
         if (!User) {
           sethandleLoginErr('Error with credentials.Please Click Again and give it a few seconds 👼')
           console.log('unexist')
         } 
+        
         const userId = User.uid
         console.log(userId)
-      
         const updateRef = doc(db, "users", User.uid);
+        setLoader(!loader)
         await updateDoc(updateRef, {
           isOnline: true
         });
           
         
-     
+        
         console.log("Update successful. Navigating to /chats.");
       
         
@@ -69,7 +68,7 @@ const Login = () => {
   return (
    
     <div>
-       
+       {loader ? '' : <Loader /> }
     <div className='signup-main-container'>
     <div className='signup-sub-main-container'>
       <span className='signup'>login</span>
