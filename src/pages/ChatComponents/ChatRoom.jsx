@@ -30,7 +30,6 @@ const ChatRoom = ({
     () => { selectUser(User) };
   }, []);
 
-  console.log(User)
 
 
   return (

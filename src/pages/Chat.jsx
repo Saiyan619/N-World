@@ -23,6 +23,7 @@ const Chat = () => {
   const [overlay, setoverlay] = useState(false);
   const [SendImg, setSendImg] = useState('');
   const [OpeningText, setOpeningText] = useState('Start a conversation👋👋 ');
+  const [lastChatMess, setlastChatMess] = useState('')
   // const [messageId, setmessageId] = useState('');
 
   function Overlay() {
@@ -49,8 +50,31 @@ const unsubscribe = onSnapshot(q, (querySnapshot) => {
   querySnapshot.forEach((doc) => {
     users.push({...doc.data(), id:doc.id});
     setUserList(users)
+    // console.log(User1)
+    //     const User2 = displayClickUser.uid;
+    //     console.log(User2)
+    //     const id = User1 > User2 ? `${User1 + User2}` : `${User2 + User1}`
+    //     console.log(id)
+    
+    //     const lastMessagesRef = collection(db, "messages", id, 'chat');
+    // const lastMsgQuery = query(lastMessagesRef, orderBy('createdAt', 'desc'));
+    
+    //       onSnapshot(lastMsgQuery, (querySnapshot) => {
+    //         let lastMsgs = []
+    //         querySnapshot.forEach((doc) => {
+    //           // console.log(doc.id, ' => ', doc.data());
+    //           lastMsgs.push(doc.data())
+    //         });
+    //         if (lastMsgs) {
+    //           setlastChatMess(lastMsgs[0])
+    //         }
+    //         else {
+    //           console.log('error')
+    //         }
+    //       })
    
   });
+  return unsubscribe()
 });
     
   }, [])
@@ -171,18 +195,51 @@ const unsubscribe = onSnapshot(q, (querySnapshot) => {
       onSnapshot(q, (querySnapshot) => {
         let msgs = []
         querySnapshot.forEach((doc) => {
-          // console.log(doc.id, ' => ', doc.data());
+          console.log(doc.id, ' => ', doc.data());
           msgs.push(doc.data())
         });
         setchatMess(msgs)
         setSendImg('')
-        settext('0')
+        settext('')
+      }) 
+
+      const lastMessageId = `${id}-${currentTimestamp}`;
+      // const lastMessageId = `${id}-lastMessage`; // Use a fixed ID for the last message
+const lastMessageDocRef = doc(collection(db, "lastmessages"), lastMessageId);
+
+// Create or overwrite the document with the last message
+await setDoc(lastMessageDocRef, {
+  id: lastMessageId,
+  text,
+  from: User1,
+  to: User2,
+  createdAt: formattedTimestamp,
+});
+
+const lastMessagesRef = collection(db, "messages", id, 'chat');
+const lastMsgQuery = query(lastMessagesRef, orderBy('createdAt', 'desc'));
+
+      onSnapshot(lastMsgQuery, (querySnapshot) => {
+        let lastMsgs = []
+        querySnapshot.forEach((doc) => {
+          console.log(doc.id, ' => ', doc.data());
+          lastMsgs.push(doc.data())
+        });
+        
+        if (lastMsgs) {
+          setlastChatMess(lastMsgs[0])
+        }
+        else {
+          console.log('error')
+        }
       })
     
     } catch (error) {
       console.error(error)
     }
   }
+
+ 
 
   
  
@@ -216,12 +273,6 @@ const unsubscribe = onSnapshot(q, (querySnapshot) => {
     // Create a query against the collection.
       const q = query(UsersRef, where("username", "==", name))
     try {
-//   const querySnapshot = await getDocs(q);
-// querySnapshot.forEach((doc) => {
-//   // doc.data() is never undefined for query doc snapshots
-//   console.log(doc.id, " => ", doc.data());
-//   setSearchedUser(doc.data());
-// });
 onSnapshot(q, (querySnapshot) => {
   const users = [];
   querySnapshot.forEach((doc) => {
@@ -231,7 +282,6 @@ onSnapshot(q, (querySnapshot) => {
     setSearchedUser(users)
   });
 });
-      // console.log(SearchedUser)
 
     } catch (error) {
       console.error(error)
@@ -263,6 +313,7 @@ onSnapshot(q, (querySnapshot) => {
               chatMess={chatMess}
               SendImg={SendImg}
               selectSearchedUser={selectSearchedUser}
+              lastChatMess={lastChatMess}
             />
           </div>
 

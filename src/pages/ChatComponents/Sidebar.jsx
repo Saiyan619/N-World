@@ -3,13 +3,11 @@ import React from 'react'
 import './sidebar.css'
 import { getUserAuth } from '../../utils/Context'
 
-const Sidebar = ({selectSearchedUser, selectedUser, chatMess, Overlay, displayClickUser, selectUser, userList, SearchedUser, name, age, setage, setname, adddoc, searchQuery }) => {
+const Sidebar = ({lastChatMess, selectSearchedUser, selectedUser, chatMess, Overlay, displayClickUser, selectUser, userList, SearchedUser, name, age, setage, setname, adddoc, searchQuery }) => {
   const { User } = getUserAuth();
-  console.log(SearchedUser)
 
-  // const tester = false;
-
-
+console.log(lastChatMess.text)
+console.log(displayClickUser.uid)
   return (
     <div className='sidebar-container'>
 
@@ -35,20 +33,17 @@ const Sidebar = ({selectSearchedUser, selectedUser, chatMess, Overlay, displayCl
       <h1 style={{ color: 'white' }}>Chats</h1>
       <div className='Users-list'>
       {userList.map((items,index) => {
-        return  <div key={index} onClick={()=>{selectUser(items)}} className={'friends-chat-list'}>
+        return <div key={index} onClick={() => { selectUser(items) }} className={'friends-chat-list'}>
+          {/* {items.uid} */}
         <img src={items.Img} alt="profilepicture" />
           <span style={{ fontSize: '18px' }}>{items.username}</span>
           
           <span style={{ padding: '4px', backgroundColor: items.isOnline ? 'green' : 'red' }}></span>
-        </div>
-      })}{userList.map((items,index) => {
-        return  <div key={index} onClick={()=>{selectUser(items)}} className={'friends-chat-list'}>
-        <img src={items.Img} alt="profilepicture" />
-          <span style={{ fontSize: '18px' }}>{items.username}</span>
-          
-          <span style={{ padding: '4px', backgroundColor: items.isOnline ? 'green' : 'red' }}></span>
+         
+          {lastChatMess.to === items.uid ? lastChatMess.text : ''  }
         </div>
       })}
+       
         </div>
 
       
