@@ -24,30 +24,30 @@ Table of Contents
     Ongoing Work and Future Features
 
 1. User Authentication with Firebase
-
 Implemented user authentication and database management using Firebase Authentication and Firestore for storing user data.
+
 2. UI Development
-
 Designed the initial user interface and acknowledged the need for further improvement.
+
 3. Integration of Tailwind CSS
-
 Considering a UI revamp, exploring the integration of Tailwind CSS for enhanced styling and responsiveness.
+
 4. Protected Routes
-
 Ensured secure navigation by incorporating protected routes that require Firebase authentication for access.
+
 5. Firebase Authentication
-
 Leveraged Firebase Authentication to handle user sign-up, login, and logout functionalities securely.
+
 6. Database Management with Firebase
-
 Established a robust database structure using Firebase Firestore to store user data, messages, and other relevant information.
-7. Storage of Images
 
+8. Storage of Images
 Implemented functionality to store and retrieve images within the chat application using Firebase Storage.
-8. User Information
 
+9. User Information
 Enhanced user profiles with additional information such as online status, provided by Firebase Firestore, creating a more comprehensive user experience.
-9. Handling of Collections and Documents
+
+10. Handling of Collections and Documents
 
 Encountered challenges in organizing collections and documents within Firebase Firestore but successfully overcame them for efficient data retrieval.
 10. Message Storage
