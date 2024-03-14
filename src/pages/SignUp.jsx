@@ -16,7 +16,7 @@ import Loader from '../mini-components/Loader';
 const SignUp = () => {
 
  
-    const { User, signUp } = getUserAuth();
+  const { User } = getUserAuth();
     const navigate = useNavigate();
   
     const [email, setemail] = useState('');
@@ -52,13 +52,12 @@ const SignUp = () => {
       // Update user profile with display name and photoURL
       await updateProfile(res.user, { displayName: username, photoURL: url });
   
-      // Save additional user data to Firestore
       await setDoc(doc(db, "users", res.user.uid), {
         uid: res.user.uid,
         username,
         email,
         password,
-        Img: url,
+        Img: '' || url,
         isOnline:true
       });
   

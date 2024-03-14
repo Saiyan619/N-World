@@ -1,13 +1,15 @@
 import React from 'react'
-// import { useEffect } from 'react'
 import './sidebar.css'
 import { getUserAuth } from '../../utils/Context'
+import profilePic from '/icons8-user-50(1).png'
+
 
 const Sidebar = ({lastChatMess, Overlay, displayClickUser, selectUser, userList, SearchedUser, name, setname, searchQuery }) => {
   // {selectSearchedUser, selectedUser, chatMess, }
   const { User } = getUserAuth();
+  console.log(User)
 
-// console.log(lastChatMess.text)
+console.log(userList)
   return (
     <div className='sidebar-container'>
 
@@ -22,7 +24,7 @@ const Sidebar = ({lastChatMess, Overlay, displayClickUser, selectUser, userList,
       <div className='search-user'>
       {SearchedUser.map((items,index) => {
         return  <div style={{marginBottom:'20px'}} key={index} onClick={()=>{selectUser(items)}} className={'friends-chat-list'}>
-        <img src={items.Img} alt="profilepicture" />
+        <img src={items.Img } alt="profilepicture" />
           <span style={{ fontSize: '18px' }}>{items.username}</span>
           <span></span>
         </div>
@@ -35,7 +37,7 @@ const Sidebar = ({lastChatMess, Overlay, displayClickUser, selectUser, userList,
       {userList.map((items,index) => {
         return <div key={index} style={{backgroundColor:displayClickUser.uid === items.id ? ' rgb(12, 0, 116)' : ' rgb(25, 6, 201)'}} onClick={() => { selectUser(items) }} className={'friends-chat-list'}>
           {/* {items.uid} */}
-        <img src={items.Img} alt="profilepicture" />
+        <img src={items.Img ? items.Img : profilePic} alt="img" />
           <span style={{ fontSize: '18px' }}>{items.username}</span>
           
           <span style={{ padding: '4px', backgroundColor: items.isOnline ? 'green' : 'red' }}></span>
