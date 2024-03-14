@@ -7,7 +7,6 @@ import profilePic from '/icons8-user-50(1).png'
 const Sidebar = ({lastChatMess, Overlay, displayClickUser, selectUser, userList, SearchedUser, name, setname, searchQuery }) => {
   // {selectSearchedUser, selectedUser, chatMess, }
   const { User } = getUserAuth();
-  console.log(User)
 
 console.log(userList)
   return (

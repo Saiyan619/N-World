@@ -62,19 +62,13 @@ const SignUp = () => {
       });
   
       // Redirect to /chats
-      console.log('signed up')
-
       navigate('/chats');
   
     } catch (error) {
-      console.log('cant sign up')
       console.error('User creation error:', error.message. error);
     }
   };
-  
-  
-  // console.log(User)
-  // console.log(Img.name)
+
   
 
   return (

@@ -6,7 +6,6 @@ import { db, storage } from '../utils/FirebaseConfig';
 import Navbar from './ChatComponents/Navbar';
 import ChatRoom from './ChatComponents/ChatRoom';
 import Sidebar from './ChatComponents/Sidebar';
-import Button from '@mui/material/Button';
 import './chat.css'
 import { getUserAuth } from '../utils/Context';
 import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
@@ -80,32 +79,6 @@ const unsubscribe = onSnapshot(q, (querySnapshot) => {
     }
 
   };
-
-  const selectMessageId = async (cid) => {
-  //   console.log(cid)
-  //   console.log(User1)
-  //   const User2 = displayClickUser.uid;
-  //   console.log(User2)
-  //   const id = User1 > User2 ? `${User1 + User2}` : `${User2 + User1}`
-  //   console.log(id)
-// try {
-//   const q = query(collection(db, "messages", id, 'chat'), where('id', '==', cid));
-//   const querySnapshot = await getDocs(q);
-
-//   if (querySnapshot.size === 0) {
-//     console.log("No document found with the specified 'cid' value.");
-//     return;
-//   }
-
-//   // Assuming there's only one document with the specified 'cid', delete it
-//   await deleteDoc(querySnapshot.docs[0].ref);
-
-//   console.log("Message deleted successfully");
-// } catch (error) {
-//   console.error("Error deleting message:", error);
-// }
-    
-  }
 
 
   const deleteMessage = async (cid) => {
@@ -191,8 +164,6 @@ await setDoc(doc(db, "lastmessages", id), {
   to: User2,
   createdAt: formattedTimestamp,
 });
-
-
     
     } catch (error) {
       console.error(error)
