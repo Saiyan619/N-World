@@ -39,9 +39,10 @@ const SignUp = () => {
 
 
 
-  const handleSubmit = async () => {
+  const handleSubmit = async () => { 
     try {
       const res = await createUserWithEmailAndPassword(auth, email, password);
+      //Reference to the path you want it to be stored in
       const ImgRef = ref(storage, `avatar/${res.user.uid}`);
       
       // Upload image and get download URL
@@ -62,11 +63,13 @@ const SignUp = () => {
       });
   
       // Redirect to /chats
+      console.log('signed up')
 
       navigate('/chats');
   
     } catch (error) {
-      console.error('User creation error:', error.message);
+      console.log('cant sign up')
+      console.error('User creation error:', error.message. error);
     }
   };
   

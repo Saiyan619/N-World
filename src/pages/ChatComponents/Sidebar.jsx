@@ -3,11 +3,11 @@ import React from 'react'
 import './sidebar.css'
 import { getUserAuth } from '../../utils/Context'
 
-const Sidebar = ({lastChatMess, selectSearchedUser, selectedUser, chatMess, Overlay, displayClickUser, selectUser, userList, SearchedUser, name, age, setage, setname, adddoc, searchQuery }) => {
+const Sidebar = ({lastChatMess, Overlay, displayClickUser, selectUser, userList, SearchedUser, name, setname, searchQuery }) => {
+  // {selectSearchedUser, selectedUser, chatMess, }
   const { User } = getUserAuth();
 
 // console.log(lastChatMess.text)
-console.log(displayClickUser.uid)
   return (
     <div className='sidebar-container'>
 
